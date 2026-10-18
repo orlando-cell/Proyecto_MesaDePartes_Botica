@@ -1,5 +1,23 @@
-   from capa_datos import cargar_facturas, guardar_facturas
+from capa_datos import cargar_facturas, guardar_facturas
+#Etapa4:
+def ordenar_por_fecha_seleccion(lista_facturas):
+    
+    lista_copia = list(lista_facturas)
+    n = len(lista_copia)
 
+    for i in range(n - 1):
+        min_idx = i
+
+        for j in range(i + 1, n):
+            if lista_copia[j].get("fecha", "") < lista_copia[min_idx].get("fecha", ""):
+                min_idx = j
+
+        
+        lista_copia[i], lista_copia[min_idx] = lista_copia[min_idx], lista_copia[i]
+
+    return lista_copia
+
+#Etapa5:
 def mostrar_menu_principal():
     print("\n" + "="*60)
     print("   MESA DE PARTES DIGITAL - BOTICA (GESTIÓN DE FACTURAS)")
@@ -124,4 +142,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
 
